@@ -25,6 +25,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact Us", new_contact_path %></li>
+        <% if current_user %>
+          <li><p><%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-primary navbar-btn", method: :delete %></p></li>
+        <% else %>
+          <li><p><%= link_to "Log In", new_user_session_path, class: "btn btn-primary navbar-btn", method: :get %>&nbsp;</p></li>
+          <li><p><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success navbar-btn", method: :get %></p></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
