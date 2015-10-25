@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025211512) do
+ActiveRecord::Schema.define(version: 20151025231419) do
 
   create_table "contacts", force: true do |t|
     t.string   "name",       limit: nil
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20151025211512) do
     t.string   "social_twitter"
     t.string   "social_facebook"
     t.string   "social_linkedin"
-    t.text     "decription"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
