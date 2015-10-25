@@ -5,23 +5,33 @@
 
   <div class="field form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
-  <div class="fieldform-group">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :password %>
+        <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+      </div>
+      <div class="col-md-6">
+        <%= f.label :password_confirmation %><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions form-group">
     <%= f.submit "Sign up", class: "btn btn-success" %>
+    <%= link_to 'Cancel', root_path, class: "btn btn-warning", id: 'form-goback-btn' %>
   </div>
 <% end %>
