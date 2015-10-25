@@ -1,71 +1,49 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
   
   <%= hidden_field_tag 'plan', params[:plan] %>
 
-  <div class="field form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
-  </div>
-
   <div class="form-group">
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :password %>
-        <% if @validatable %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-      </div>
-      <div class="col-md-6">
-        <%= f.label :password_confirmation %><br />
-      </div>
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      </div>
-      <div class="col-md-6">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-      </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+    </div>
+    <div class="col-sm-5">
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmation", class: "form-control" %>
     </div>
   </div>
   
   <div class="form-group">
-    <%= label_tag :card_number, "Credit Card Number" %>
-    <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
-  </div>
-  
-  <div class="field form-group">
-    <div class="row">
-      <div class="col-md-6">
-        <%= label_tag :card_month, "Card Details" %>
-      </div>
-      <div class="col-md-6">
-        <%= label_tag :card_expiration, "Expiration Date" %>
+    <%= label_tag :card_number, "CC#", class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= text_field_tag :card_number, nil, name: nil, placeholder: "Credit Card Number", class: "form-control" %>
+    </div>
+    <div class="col-sm-3">
+      <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2">CVV</span>
+        <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="input-group">
-          <span class="input-group-addon" id="sizing-addon2">CVV</span>
-          <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="input-group">
-          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control"}  %>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="input-group">
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "form-control"}  %>
-        </div>
-      </div>
+    <div class="col-sm-2">
+      <%= select_month nil, {use_two_digit_numbers: true, prompt: "Month"}, {name: nil, id: "card_month", class: "form-control"}  %>
+    </div>
+    <div class="col-sm-2">
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15, prompt: "Year"}, {name: nil, id: "card_year", class: "form-control"}  %>
     </div>
   </div>
 
   <div class="actions form-group">
-    <%= f.submit "Sign up", class: "btn btn-success", id: 'form-submit-btn' %>
-    <%= link_to 'Cancel', root_path, class: "btn btn-warning", id: 'form-goback-btn' %>
+    <div class="col-md-offset-3 col-md-3">
+      <%= f.submit "Sign up", class: "btn btn-success btn-block", id: 'form-submit-btn' %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to 'Cancel', root_path, class: "btn btn-warning btn-block", id: 'form-goback-btn' %>
+    </div>
   </div>
 <% end %>
