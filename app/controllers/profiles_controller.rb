@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   def new
     # form where a user can fill out their own profile.
     @user = User.find(params[:user_id])
-    @profile = @user.build_profile
+    @profile = Profile.new
     @default_user_email = @user.email
   end
   
@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:user_id])
     @profile = @user.build_profile(profile_params)
     if @profile.save
-      flash[:success] = "Your profile was updated successfully!"
+      flash[:success] = "Your profile was updated successfully! :D"
       redirect_to user_path(params[:user_id])
     else
       flash[:danger] = "There was a problem updating your profile. :("
